@@ -19,7 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8eb1db8-177e-48e1-b602-4bb1557940c0" name="Default Changelist" comment="" />
+    <list default="true" id="b8eb1db8-177e-48e1-b602-4bb1557940c0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ayat/models/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/ayat/models/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/users/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/users/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/users/test_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/users/test_users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/utils/db_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/utils/db_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/utils/object_faker.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,9 +84,37 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="589" y="237" width="732" height="644" key="#Inspections" timestamp="1588703292304">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state x="589" y="237" width="732" height="644" key="#Inspections/0.32.1920.1048@0.32.1920.1048" timestamp="1588703292304" />
+    <state x="418" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588706291143">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state x="418" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.32.1920.1048@0.32.1920.1048" timestamp="1588706291143" />
     <state x="698" y="336" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588421832688">
       <screen x="0" y="32" width="1920" height="1048" />
     </state>
     <state x="698" y="336" width="524" height="508" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.32.1920.1048@0.32.1920.1048" timestamp="1588421832688" />
+    <state width="1899" height="275" key="GridCell.Tab.0.bottom" timestamp="1588706297500">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state width="1899" height="275" key="GridCell.Tab.0.bottom/0.32.1920.1048@0.32.1920.1048" timestamp="1588706297500" />
+    <state width="1899" height="275" key="GridCell.Tab.0.center" timestamp="1588706297499">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state width="1899" height="275" key="GridCell.Tab.0.center/0.32.1920.1048@0.32.1920.1048" timestamp="1588706297499" />
+    <state width="1899" height="275" key="GridCell.Tab.0.left" timestamp="1588706297498">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state width="1899" height="275" key="GridCell.Tab.0.left/0.32.1920.1048@0.32.1920.1048" timestamp="1588706297498" />
+    <state width="1899" height="275" key="GridCell.Tab.0.right" timestamp="1588706297500">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state width="1899" height="275" key="GridCell.Tab.0.right/0.32.1920.1048@0.32.1920.1048" timestamp="1588706297500" />
+    <state x="623" y="262" width="672" height="678" key="search.everywhere.popup" timestamp="1588718277601">
+      <screen x="0" y="32" width="1920" height="1048" />
+    </state>
+    <state x="623" y="262" width="672" height="678" key="search.everywhere.popup/0.32.1920.1048@0.32.1920.1048" timestamp="1588718277601" />
   </component>
 </project>
