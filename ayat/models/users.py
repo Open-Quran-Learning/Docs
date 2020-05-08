@@ -19,7 +19,7 @@ class User(db.Model):
     gender = db.Column(db.Boolean, nullable=False)
     password = db.Column(db.VARCHAR(80), nullable=False)
     registration_date = db.Column(db.Date, nullable=False)
-    is_activated = db.Column(db.Boolean)
+    is_activated = db.Column(db.Boolean, default=False)
     db.CheckConstraint("birth_date > '1971-01-01'")
     type = db.Column(db.String(30), nullable=False)
 

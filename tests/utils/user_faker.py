@@ -10,7 +10,6 @@ def get_student():
                       phone_number='01897779788',
                       gender=True,
                       password='daskjsldsaj',
-                      is_activated=True,
                       registration_date=datetime.date(year=2020, month=5, day=10),
                       type='student'
                       )
@@ -25,7 +24,6 @@ def get_students():
                             phone_number='01897779788',
                             gender=True,
                             password='daskjsldsaj',
-                            is_activated=True,
                             registration_date=datetime.date(year=2020, month=5, day=10),
                             type='student'
                             ),
@@ -36,7 +34,6 @@ def get_students():
                             phone_number='01897771518',
                             gender=True,
                             password='daskjsldsaj',
-                            is_activated=True,
                             registration_date=datetime.date(year=2020, month=5, day=12),
                             type='student'
                             ),
@@ -63,7 +60,6 @@ def get_staff_member():
                   phone_number='01897779788',
                   gender=True,
                   password='daskjsldsaj',
-                  is_activated=True,
                   registration_date=datetime.date(year=2020, month=5, day=10),
                   type='staff'
                   )
@@ -78,7 +74,6 @@ def get_staff():
                         phone_number='01551846648',
                         gender=True,
                         password='daskjsldsaj',
-                        is_activated=True,
                         registration_date=datetime.date(year=2020, month=5, day=10),
                         type='staff'
                         ),
@@ -89,7 +84,6 @@ def get_staff():
                         phone_number='01468466648',
                         gender=True,
                         password='daskjsldsaj',
-                        is_activated=True,
                         registration_date=datetime.date(year=2020, month=5, day=10),
                         type='staff'
                         ),
@@ -100,7 +94,6 @@ def get_staff():
                         phone_number='01558796648',
                         gender=True,
                         password='daskjsldsaj',
-                        is_activated=True,
                         registration_date=datetime.date(year=2020, month=5, day=10),
                         type='staff'
                         )

@@ -38,8 +38,8 @@ def reset_db():
     setup_db()
 
 
-def check_data_consistency(entity):
-    is_consistent = False
+def check_data_inconsistency(entity):
+    is_inconsistent = False
 
     for row in entity:
         db.session.add(row)
@@ -47,11 +47,11 @@ def check_data_consistency(entity):
         db.session.commit()
     except InvalidRequestError:
         db.session.rollback()
-        is_consistent = True
+        is_inconsistent = True
     except IntegrityError:
         db.session.rollback()
-        is_consistent = True
+        is_inconsistent = True
     except DataError:
         db.session.rollback()
-        is_consistent = True
-    return is_consistent
+        is_inconsistent = True
+    return is_inconsistent

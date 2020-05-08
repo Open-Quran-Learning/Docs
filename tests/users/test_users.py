@@ -1,9 +1,9 @@
 from ayat.models.users import User, Student, Staff, Guardian, Permission
 from ayat import db
-from tests.utils.db_utils import check_data_consistency
+from tests.utils.db_utils import check_data_inconsistency
 from sqlalchemy.exc import IntegrityError, InvalidRequestError, DataError
 
-
+"""
 def test_students_blank(blank):
     assert [] == Student.query.all()
 
@@ -20,9 +20,7 @@ def test_guardian_blank(blank):
     assert [] == Guardian.query.all()
 
 
-def test_students_has_guardians_blank(student):
-    db.session.add(student)
-    db.session.commit()
+def test_student_has_guardians_blank(student):
     assert [] == student.guardians
 
 
@@ -37,15 +35,15 @@ def test_staff_exist(staff_member):
 
 
 def test_user_uniqueness_inconsistency(inconsistent_users):
-    assert check_data_consistency(inconsistent_users)
+    assert check_data_inconsistency(inconsistent_users)
 
 
 def test_guardian_uniqueness_inconsistency(inconsistent_guardians):
-    assert check_data_consistency(inconsistent_guardians)
+    assert check_data_inconsistency(inconsistent_guardians)
 
 
 def test_permissions_uniqueness_inconsistency(inconsistent_permissions):
-    assert check_data_consistency(inconsistent_permissions)
+    assert check_data_inconsistency(inconsistent_permissions)
 
 
 def test_student_has_guardians(students, guardians):
@@ -81,28 +79,32 @@ def test_staff_has_permissions(staff, permissions):
                     break
     assert result
 
-
+"""
 def test_intermediary_student_guardian_uniqueness(student, guardian):
+    is_unique = False
     try:
         student.guardians.append(guardian)
         student.guardians.append(guardian)
         db.session.commit()
     except IntegrityError:
         db.session.rollback()
-        assert True
+        is_unique = True
     except InvalidRequestError:
         db.session.rollback()
-        assert True
+        is_unique = True
+    assert is_unique
 
 
 def test_intermediary_staff_permission_uniqueness(staff_member, permission):
+    is_unique = False
     try:
         staff_member.permissions.append(permission)
         staff_member.permissions.append(permission)
         db.session.commit()
     except IntegrityError:
         db.session.rollback()
-        assert True
+        is_unique = True
     except InvalidRequestError:
         db.session.rollback()
-        assert True
+        is_unique = True
+    assert is_unique
