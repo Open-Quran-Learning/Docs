@@ -1,10 +1,10 @@
-"""from ayat.models.programs import Program, Category, Course, Skill, Faq, Lesson, Requirement, Lecture
+from ayat.models.programs import Program, Category, Course, Skill, Faq, Lesson, Requirement, Lecture
 from ayat import db
 from tests.utils.db_utils import check_data_inconsistency
 from sqlalchemy.exc import IntegrityError, InvalidRequestError
 from tests.utils.program_faker import get_requirement
 
-
+"""
 def test_programs_blank(blank):
     assert [] == Program.query.all()
 
@@ -233,52 +233,67 @@ def test_program_has_categories(programs, categories):
 
 
 def test_intermediary_program_skill_uniqueness(program, skill):
+    is_unique = True
     try:
         program.skills.append(skill)
+        db.session.commit()
         program.skills.append(skill)
         db.session.commit()
     except IntegrityError:
         db.session.rollback()
-        assert True
+        is_unique = True
     except InvalidRequestError:
         db.session.rollback()
-        assert True
+        is_unique = True
+    assert is_unique
 
 
 def test_intermediary_program_category_uniqueness(program, category):
+    is_unique = False
     try:
         program.categories.append(category)
+        db.session.commit()
         program.categories.append(category)
         db.session.commit()
     except IntegrityError:
         db.session.rollback()
-        assert True
+        is_unique = True
     except InvalidRequestError:
         db.session.rollback()
-        assert True
+        is_unique = True
+    assert is_unique
 
 
 def test_intermediary_program_faq_uniqueness(program, faq):
+    is_unique = False
     try:
         program.faqs.append(faq)
+        db.session.commit()
         program.faqs.append(faq)
         db.session.commit()
     except IntegrityError:
         db.session.rollback()
-        assert True
+        is_unique = True
     except InvalidRequestError:
         db.session.rollback()
-        assert True
+        is_unique = True
+    assert is_unique
 
-
+"""
+"""
 def test_intermediary_program_prerequisite_uniqueness(programs):
+    is_unique = False
     try:
         programs[0].prerequisites.append(programs[1])
+        db.session.commit()
         programs[0].prerequisites.append(programs[1])
         db.session.commit()
     except IntegrityError:
         db.session.rollback()
-        assert True
+        is_unique = True
     except InvalidRequestError:
         db.session.rollback()
-        assert True"""
+        is_unique = True
+    assert is_unique
+
+"""
