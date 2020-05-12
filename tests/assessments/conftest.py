@@ -53,3 +53,13 @@ def inconsistent_exams():
     program_exams[0].public_exam_id = program_exams[1].public_exam_id
     yield program_exams
     teardown_db()
+
+@pytest.fixture
+def program_exams():
+    setup_db()
+    program_exams = get_program_exams()
+    for program_exam in program_exams:
+        db.session.add(program_exam)
+    db.session.commit()
+    yield program_exams
+    teardown_db()

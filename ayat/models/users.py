@@ -119,7 +119,6 @@ Staff_Permission = db.Table('staff_permission', db.Model.metadata,
 class Staff(User):
     __tablename__ = "staff"
     staff_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), primary_key=True)
-    assessment_results = db.relationship("AssessmentResults", back_populates="staff")
     permissions = db.relationship('Permission', secondary=Staff_Permission, backref=db.backref('staff', lazy='dynamic'))
     program_supervision = db.relationship("ProgramSupervision", back_populates="staff")
     recitations = db.relationship('Recitation', backref=db.backref('staff'))

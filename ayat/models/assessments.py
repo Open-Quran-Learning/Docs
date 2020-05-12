@@ -9,16 +9,16 @@ class AssessmentResults(db.Model):
     public_assessment_id = db.Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
     exam_id = db.Column(db.Integer, db.ForeignKey('exam.exam_id'), nullable=False)
     student_id = db.Column(db.Integer, db.ForeignKey('student.student_id'), nullable=False)
-    staff_id = db.Column(db.Integer, db.ForeignKey('staff.staff_id'), nullable=False)
     grade = db.Column(db.SMALLINT, nullable=False)
 
-    db.UniqueConstraint(exam_id, student_id, staff_id)
+    db.UniqueConstraint(exam_id, student_id)
     student = db.relationship("Student")
     exam = db.relationship("Exam")
-    staff = db.relationship("Staff")
 
     def __repr__(self):
-        Info_text = f'Grade: {self.grade}\n'
+        Info_text = f'Student ID: {self.student_id}\t'\
+                    f'Exam ID: {self.exam_id}\t'\
+                    f'Grade: {self.grade}\n'
 
         return Info_text
 
@@ -85,7 +85,7 @@ class ProgramEnrollment(db.Model):
     program_supervision_id = db.Column(db.Integer, primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('student.student_id'), nullable=False)
     program_id = db.Column(db.Integer, db.ForeignKey('program.program_id'), nullable=False)
-    is_accepted = db.Column(db.Boolean, nullable=False, default=False)
+    is_accepted = db.Column(db.Boolean, nullable=True)
     is_completed = db.Column(db.Boolean, nullable=False, default=False)
     join_date = db.Column(db.Date, nullable=False)
 
@@ -94,7 +94,9 @@ class ProgramEnrollment(db.Model):
     program = db.relationship("Program")
 
     def __repr__(self):
-        Info_text = f'Is Accepted?: {self.is_accepted}\t' \
+        Info_text = f'Student ID: {self.student_id}\t' \
+                    f'Program ID: {self.program_id}\t' \
+                    f'Is Accepted?: {self.is_accepted}\t' \
                     f'Join Date: {self.join_date}\n'
 
         return Info_text

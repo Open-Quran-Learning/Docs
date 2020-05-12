@@ -131,3 +131,46 @@ def test_program_supervision_inconsistency(staff_member, program):
         is_unique = True
         db.session.rollback()
     assert is_unique
+
+def test_assessment_result_has_results(students,program_exams):
+    result = False
+    for student in students:
+        for program_exam in program_exams:
+            assessment_result = AssessmentResults(student=student, exam=program_exam, grade = 100)
+            db.session.add(assessment_result)
+    db.session.commit()
+    result_students = Student.query.all()
+    for student in students:
+        expected_program_exams = []
+        for i in range(0, len(student.assessment_results)):
+            for program_exam in program_exams:
+                if student.assessment_results[i].exam_id == program_exam.exam_id:
+                    expected_program_exams.append(program_exam)
+        for expected_program_exam in expected_program_exams:
+            for result_student in result_students:
+                result_program_exams = []
+                for i in range(0, len(result_student.assessment_results)):
+                    result_program_exams.append(
+                        ProgramExam.query.filter_by(exam_id=result_student.assessment_results[i].exam_id).first())
+                for result_program_exam in result_program_exams:
+                    if expected_program_exam.equals(result_program_exam):
+                        result = True
+                        break
+    assert result
+
+def test_assessment_results_inconsistency(student, program_exam):
+    is_unique = False
+    try:
+        assessment_result = AssessmentResults(student=student, exam=program_exam, grade = 100)
+        db.session.add(assessment_result)
+        db.session.commit()
+        assessment_result = AssessmentResults(student=student, exam=program_exam, grade = 100)
+        db.session.add(assessment_result)
+        db.session.commit()
+    except IntegrityError:
+        is_unique = True
+        db.session.rollback()
+    except InvalidRequestError:
+        is_unique = True
+        db.session.rollback()
+    assert is_unique
