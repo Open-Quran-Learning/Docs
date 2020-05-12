@@ -4,7 +4,7 @@ from tests.utils.db_utils import check_data_inconsistency
 from sqlalchemy.exc import IntegrityError, InvalidRequestError
 from tests.utils.program_faker import get_requirement
 
-"""
+
 def test_programs_blank(blank):
     assert [] == Program.query.all()
 
@@ -279,7 +279,7 @@ def test_intermediary_program_faq_uniqueness(program, faq):
         is_unique = True
     assert is_unique
 
-"""
+
 """
 def test_intermediary_program_prerequisite_uniqueness(programs):
     is_unique = False
@@ -295,5 +295,4 @@ def test_intermediary_program_prerequisite_uniqueness(programs):
         db.session.rollback()
         is_unique = True
     assert is_unique
-
 """

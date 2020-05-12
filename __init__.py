@@ -33,3 +33,8 @@ db.session.commit()
 lesson_exam = get_lesson_exam()
 db.session.add(lesson_exam)
 db.session.commit()
+
+
+web_address = WebAddress(url = "https://www.google.com")
+lecture_schedule = LectureSchedule(recurrent = True, online = True)
+appointment = Appointment(day=2, start_hour=datetime.time(3,30), end_hour=datetime.time(5,30), schedule=lecture_schedule, event_address=web_address)

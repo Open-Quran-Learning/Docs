@@ -4,13 +4,7 @@ from tests.utils.program_faker import get_program, get_course, get_lesson, get_l
     get_category, get_faq, get_requirement, get_programs, get_courses, get_lessons, get_lectures, \
     get_skills, get_categories, get_faqs, get_requirements
 from ayat import db
-
-
-@pytest.fixture
-def blank():
-    setup_db()
-    yield
-    teardown_db()
+from tests.users.conftest import blank
 
 
 @pytest.fixture

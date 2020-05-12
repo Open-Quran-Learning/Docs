@@ -236,7 +236,7 @@ class Category(db.Model):
 class Lecture(db.Model):
     __tablename__ = "lecture"
     __table_args__ = (db.UniqueConstraint('program_id', 'lecture_order'),)
-    lecture_id = db.Column(db.SMALLINT, primary_key=True)
+    lecture_id = db.Column(db.Integer, primary_key=True)
     public_lecture_id = db.Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
     lecture_name = db.Column(db.VARCHAR(60), nullable=False)
     program_id = db.Column(db.SMALLINT, db.ForeignKey("program.program_id"), nullable=False)

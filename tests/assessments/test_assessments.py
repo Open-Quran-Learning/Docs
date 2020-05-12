@@ -20,6 +20,18 @@ def test_lesson_exam_blank(blank):
     assert [] == LessonExam.query.all()
 
 
+def test_assessment_results_blank(blank):
+    assert [] == AssessmentResults.query.all()
+
+
+def test_program_enrollment_blank(blank):
+    assert [] == ProgramEnrollment.query.all()
+
+
+def test_program_supervision_blank(blank):
+    assert [] == ProgramSupervision.query.all()
+
+
 def test_lesson_exam_has_exams(lesson_exam):
     result = LessonExam.query.first()
     assert lesson_exam.equals(result)
@@ -132,11 +144,12 @@ def test_program_supervision_inconsistency(staff_member, program):
         db.session.rollback()
     assert is_unique
 
-def test_assessment_result_has_results(students,program_exams):
+
+def test_assessment_result_has_results(students, program_exams):
     result = False
     for student in students:
         for program_exam in program_exams:
-            assessment_result = AssessmentResults(student=student, exam=program_exam, grade = 100)
+            assessment_result = AssessmentResults(student=student, exam=program_exam, grade=100)
             db.session.add(assessment_result)
     db.session.commit()
     result_students = Student.query.all()
@@ -158,13 +171,14 @@ def test_assessment_result_has_results(students,program_exams):
                         break
     assert result
 
+
 def test_assessment_results_inconsistency(student, program_exam):
     is_unique = False
     try:
-        assessment_result = AssessmentResults(student=student, exam=program_exam, grade = 100)
+        assessment_result = AssessmentResults(student=student, exam=program_exam, grade=100)
         db.session.add(assessment_result)
         db.session.commit()
-        assessment_result = AssessmentResults(student=student, exam=program_exam, grade = 100)
+        assessment_result = AssessmentResults(student=student, exam=program_exam, grade=100)
         db.session.add(assessment_result)
         db.session.commit()
     except IntegrityError:

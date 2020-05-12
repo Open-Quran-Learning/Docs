@@ -3,7 +3,7 @@ from ayat import db
 from tests.utils.db_utils import check_data_inconsistency
 from sqlalchemy.exc import IntegrityError, InvalidRequestError, DataError
 
-"""
+
 def test_students_blank(blank):
     assert [] == Student.query.all()
 
@@ -114,4 +114,3 @@ def test_intermediary_staff_permission_uniqueness(staff_member, permission):
         db.session.rollback()
         is_unique = True
     assert is_unique
-"""
