@@ -1,4 +1,3 @@
-
 from ayat.__init__ import db
 from sqlalchemy.dialects.postgresql import UUID, ARRAY, JSON
 import uuid
@@ -6,20 +5,20 @@ from ayat.models.users import *
 
 class AssessmentResults(db.Model):
     __tablename__ = 'assessment_results'
-    enrollment_id = db.Column(db.Integer, primary_key=True)
+    result_id = db.Column(db.Integer, primary_key=True)
     public_assessment_id = db.Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
     exam_id = db.Column(db.Integer, db.ForeignKey('exam.exam_id'), nullable=False)
     student_id = db.Column(db.Integer, db.ForeignKey('student.student_id'), nullable=False)
-    staff_id = db.Column(db.Integer, db.ForeignKey('staff.staff_id'), nullable=False)
     grade = db.Column(db.SMALLINT, nullable=False)
 
-    db.UniqueConstraint(exam_id, student_id, staff_id)
+    db.UniqueConstraint(exam_id, student_id)
     student = db.relationship("Student")
     exam = db.relationship("Exam")
-    staff = db.relationship("Staff")
 
     def __repr__(self):
-        Info_text = f'Grade: {self.grade}\n'
+        Info_text = f'Student ID: {self.student_id}\t'\
+                    f'Exam ID: {self.exam_id}\t'\
+                    f'Grade: {self.grade}\n'
 
         return Info_text
 
@@ -28,7 +27,7 @@ class Exam(db.Model):
     __tablename__ = 'exam'
     exam_id = db.Column(db.Integer, primary_key=True)
     public_exam_id = db.Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
-    qusetion = db.Column(ARRAY(JSON))
+    question = db.Column(JSON)
     assessment_results = db.relationship("AssessmentResults", back_populates="exam")
 
     type = db.Column(db.VARCHAR(15))
@@ -38,11 +37,16 @@ class Exam(db.Model):
     }
 
     def __repr__(self):
-        Info_text = f'Qusetion: {self.qusetion}\t'\
-                     f'Assessment Results: {self.assessment_results}\n'
+        Info_text = f'Public ID:{self.public_exam_id}\t'\
+                    f'Question: {self.question}\t' \
+                    f'Assessment Results: {self.assessment_results}\n'
 
         return Info_text
 
+    def equals(self,exam):
+        if  exam.public_exam_id ==self.public_exam_id:
+            return True
+        return False
 
 class ProgramExam(Exam):
     __tablename__ = 'program_exam'
@@ -53,8 +57,6 @@ class ProgramExam(Exam):
         'polymorphic_identity': 'program_exam'
     }
 
-    def __repr__(self):
-        self.Super().__repr__()
 
 
 class CourseExam(Exam):
@@ -66,8 +68,6 @@ class CourseExam(Exam):
         'polymorphic_identity': 'course_exam'
     }
 
-    def __repr__(self):
-        self.Super().__repr__()
 
 
 class LessonExam(Exam):
@@ -79,17 +79,14 @@ class LessonExam(Exam):
         'polymorphic_identity': 'lesson_exam'
     }
 
-    def __repr__(self):
-        self.Super().__repr__()
-
 
 class ProgramEnrollment(db.Model):
-
-    __tablename= 'program_enrollment'
-    program_enrollment_id = db.Column(db.Integer, primary_key=True)
+    __tablename__ = 'program_enrollment'
+    program_supervision_id = db.Column(db.Integer, primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey('student.student_id'), nullable=False)
     program_id = db.Column(db.Integer, db.ForeignKey('program.program_id'), nullable=False)
-    is_accepted = db.Column(db.Boolean, nullable=False)
+    is_accepted = db.Column(db.Boolean, nullable=True)
+    is_completed = db.Column(db.Boolean, nullable=False, default=False)
     join_date = db.Column(db.Date, nullable=False)
 
     db.UniqueConstraint(student_id, program_id)
@@ -97,7 +94,20 @@ class ProgramEnrollment(db.Model):
     program = db.relationship("Program")
 
     def __repr__(self):
-        Info_text = f'Is Accepted?: {self.is_accepted}\t'\
-                     f'Join Date: {self.join_date}\n'
+        Info_text = f'Student ID: {self.student_id}\t' \
+                    f'Program ID: {self.program_id}\t' \
+                    f'Is Accepted?: {self.is_accepted}\t' \
+                    f'Join Date: {self.join_date}\n'
 
         return Info_text
+
+
+class ProgramSupervision(db.Model):
+    __tablename__ = 'program_supervision'
+    program_supervision_id = db.Column(db.Integer, primary_key=True)
+    staff_id = db.Column(db.Integer, db.ForeignKey('staff.staff_id'), nullable=False)
+    program_id = db.Column(db.Integer, db.ForeignKey('program.program_id'), nullable=False)
+
+    db.UniqueConstraint(staff_id, program_id)
+    staff = db.relationship("Staff")
+    program = db.relationship("Program")

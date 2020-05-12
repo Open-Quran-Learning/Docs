@@ -3,7 +3,7 @@ from ayat import db
 from tests.utils.db_utils import check_data_inconsistency
 from sqlalchemy.exc import IntegrityError, InvalidRequestError, DataError
 
-"""
+
 def test_students_blank(blank):
     assert [] == Student.query.all()
 
@@ -52,14 +52,16 @@ def test_student_has_guardians(students, guardians):
         for guardian in guardians:
             student.guardians.append(guardian)
     db.session.commit()
-    students = Student.query.all()
+    result_students = Student.query.all()
     for student in students:
         expected_guardians = student.guardians
-        for guardian in student.guardians:
-            for expected_guardian in expected_guardians:
-                if guardian.equals(expected_guardian):
-                    result = True
-                    break
+        for expected_guardian in expected_guardians:
+            for result_student in result_students:
+                result_guardians = result_student.guardians
+                for result_guardian in result_guardians:
+                    if expected_guardian.equals(result_guardian):
+                        result = True
+                        break
     assert result
 
 
@@ -69,21 +71,24 @@ def test_staff_has_permissions(staff, permissions):
         for permission in permissions:
             staff_member.permissions.append(permission)
     db.session.commit()
-    staff = Staff.query.all()
+    result_staff = Staff.query.all()
     for staff_member in staff:
         expected_permissions = staff_member.permissions
-        for permission in staff_member.permissions:
-            for expected_permission in expected_permissions:
-                if permission.equals(expected_permission):
-                    result = True
-                    break
+        for expected_permission in expected_permissions:
+            for result_staff_member in result_staff:
+                result_permissions = result_staff_member.permissions
+                for result_permission in result_permissions:
+                    if expected_permission.equals(result_permission):
+                        result = True
+                        break
     assert result
 
-"""
+
 def test_intermediary_student_guardian_uniqueness(student, guardian):
     is_unique = False
     try:
         student.guardians.append(guardian)
+        db.session.commit()
         student.guardians.append(guardian)
         db.session.commit()
     except IntegrityError:
@@ -99,6 +104,7 @@ def test_intermediary_staff_permission_uniqueness(staff_member, permission):
     is_unique = False
     try:
         staff_member.permissions.append(permission)
+        db.session.commit()
         staff_member.permissions.append(permission)
         db.session.commit()
     except IntegrityError:

@@ -53,11 +53,11 @@ def get_students():
 
 
 def get_staff_member():
-    staff = Staff(name='Mohamed',
-                  email='mohamed@gmail.com',
+    staff = Staff(name='MStaff',
+                  email='mohamedasdsad@gmail.com',
                   birth_date=datetime.date(year=1986, month=1, day=7),
                   country_name='Egypt',
-                  phone_number='01897779788',
+                  phone_number='01171131388',
                   gender=True,
                   password='daskjsldsaj',
                   registration_date=datetime.date(year=2020, month=5, day=10),

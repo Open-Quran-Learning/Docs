@@ -4,28 +4,31 @@ import uuid
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from ayat import db
-
+from sqlalchemy import UniqueConstraint
 
 program_skill = db.Table('program_skill', db.Model.metadata,
                          db.Column('program_skill_id', db.Integer, primary_key=True),
                          db.Column('program_id', db.Integer, db.ForeignKey('program.program_id')),
-                         db.Column('skill_id', db.SMALLINT, db.ForeignKey('skill.skill_id')))
+                         db.Column('skill_id', db.SMALLINT, db.ForeignKey('skill.skill_id')),
+                         UniqueConstraint('program_id', 'skill_id'))
 
 program_faqs = db.Table('program_faqs', db.Model.metadata,
                         db.Column('program_faq_id', db.SMALLINT, primary_key=True),
                         db.Column('faq_id', db.Integer, db.ForeignKey('faq.faq_id')),
-                        db.Column('program_id', db.Integer, db.ForeignKey('program.program_id')))
+                        db.Column('program_id', db.Integer, db.ForeignKey('program.program_id')),
+                        UniqueConstraint('program_id', 'faq_id'))
 
 program_category = db.Table('program_category', db.Model.metadata,
                             db.Column('program_category_id', db.SMALLINT, primary_key=True),
                             db.Column('category_id', db.Integer, db.ForeignKey('category.category_id')),
-                            db.Column('program_id', db.Integer, db.ForeignKey('program.program_id')))
+                            db.Column('program_id', db.Integer, db.ForeignKey('program.program_id')),
+                            UniqueConstraint('program_id', 'category_id'))
 
 program_prerequisite = db.Table('program_prerequisite', db.Model.metadata,
                                 db.Column('prerequisite_id', db.SMALLINT, primary_key=True),
                                 db.Column('dependency_id', db.Integer, db.ForeignKey('program.program_id')),
-                                db.Column('program_id', db.Integer, db.ForeignKey('program.program_id')))
-
+                                db.Column('program_id', db.Integer, db.ForeignKey('program.program_id')),
+                                UniqueConstraint('program_id', 'dependency_id'))
 
 ############################################################################
 class Program(db.Model):
@@ -50,6 +53,7 @@ class Program(db.Model):
     lectures = db.relationship('Lecture', backref=db.backref('program'))
     requirements = db.relationship("Requirement", backref=db.backref('program'))
     program_enrollment = db.relationship("ProgramEnrollment", back_populates="program")
+    staff = db.relationship('ProgramSupervision', back_populates="program")
     prerequisites = db.relationship(
         'Program',
         secondary=program_prerequisite,
@@ -85,7 +89,7 @@ class Program(db.Model):
                 and self.program_description == program.program_description \
                 and self.is_available == program.is_available \
                 and self.start_date == program.start_date \
-                and self.end_date == program.end_date\
+                and self.end_date == program.end_date \
                 and self.requirement_id == program.requirement_id:
             return True
         return False
@@ -150,7 +154,7 @@ class Course(db.Model):
     def equals(self, course):
         if self.course_name == course.course_name \
                 and self.course_description == course.course_description \
-                and self.course_order == course.course_order\
+                and self.course_order == course.course_order \
                 and self.program_id == course.program_id:
             return True
         return False
@@ -182,7 +186,7 @@ class Lesson(db.Model):
 
     def equals(self, lesson):
         if self.lesson_name == lesson.lesson_name \
-                and self.course_id == lesson.course_id\
+                and self.course_id == lesson.course_id \
                 and self.lesson_description == lesson.lesson_description \
                 and self.content == lesson.content \
                 and self.lesson_order == lesson.lesson_order \
@@ -232,7 +236,7 @@ class Category(db.Model):
 class Lecture(db.Model):
     __tablename__ = "lecture"
     __table_args__ = (db.UniqueConstraint('program_id', 'lecture_order'),)
-    lecture_id = db.Column(db.SMALLINT, primary_key=True)
+    lecture_id = db.Column(db.Integer, primary_key=True)
     public_lecture_id = db.Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
     lecture_name = db.Column(db.VARCHAR(60), nullable=False)
     program_id = db.Column(db.SMALLINT, db.ForeignKey("program.program_id"), nullable=False)

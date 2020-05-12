@@ -3,14 +3,20 @@ import datetime
 
 
 def get_program():
-    requirement_id = get_requirement()
+    requirement = get_requirement()
     d0 = datetime.datetime(year=2020, month=3, day=7)
     d1 = datetime.datetime(year=2020, month=5, day=7)
-    program = Program(program_name='hadst', difficulty_level='easy', price=0, program_picture='a.png',
-                      program_cover='b.png'
-                      , program_description='faded', is_available=True, start_date=d0, end_date=d1,
+    program = Program(program_name='hadst',
+                      difficulty_level='easy',
+                      price=0,
+                      program_picture='a.png',
+                      program_cover='b.png',
+                      program_description='faded',
+                      is_available=True,
+                      start_date=d0,
+                      end_date=d1,
                       is_open_to_public=True)
-    requirement_id.program.append(program)
+    requirement.program.append(program)
     return program
 
 
@@ -18,17 +24,25 @@ def get_programs():
     requirement_id = get_requirement()
     d0 = datetime.datetime(year=2020, month=3, day=1)
     d1 = datetime.datetime(year=2020, month=4, day=1)
-    d3 = datetime.datetime(year=2020, month=5, day=1)
-    d4 = datetime.datetime(year=2020, month=6, day=1)
-    d5 = datetime.datetime(year=2021, month=1, day=1)
-    d6 = datetime.datetime(year=2021, month=2, day=1)
-    program_list = [Program(program_name='first', difficulty_level='easy', price=0, program_picture='a.png',
-                            program_cover='b.png'
-                            , program_description='faded', is_available=True, start_date=d0, end_date=d1,
+    program_list = [Program(program_name='first',
+                            difficulty_level='easy',
+                            price=0,
+                            program_picture='a.png',
+                            program_cover='b.png',
+                            program_description='faded',
+                            is_available=True,
+                            start_date=d0,
+                            end_date=d1,
                             is_open_to_public=False),
-                    Program(program_name='second', difficulty_level='hard', price=0, program_picture='a.png',
-                            program_cover='b.png'
-                            , program_description='faded', is_available=True, start_date=d0, end_date=d1,
+                    Program(program_name='second',
+                            difficulty_level='hard',
+                            price=0,
+                            program_picture='a.png',
+                            program_cover='b.png',
+                            program_description='faded',
+                            is_available=True,
+                            start_date=d0,
+                            end_date=d1,
                             is_open_to_public=False)]
     requirement_id.program.append(program_list[0])
     requirement_id.program.append(program_list[1])
