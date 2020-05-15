@@ -6,7 +6,7 @@ from ayat.models.users import *
 class AssessmentResults(db.Model):
     __tablename__ = 'assessment_results'
     result_id = db.Column(db.Integer, primary_key=True)
-    public_assessment_id = db.Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
+    public_result_id = db.Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
     exam_id = db.Column(db.Integer, db.ForeignKey('exam.exam_id'), nullable=False)
     student_id = db.Column(db.Integer, db.ForeignKey('student.student_id'), nullable=False)
     grade = db.Column(db.SMALLINT, nullable=False)
@@ -86,7 +86,7 @@ class ProgramEnrollment(db.Model):
     student_id = db.Column(db.Integer, db.ForeignKey('student.student_id'), nullable=False)
     program_id = db.Column(db.Integer, db.ForeignKey('program.program_id'), nullable=False)
     is_accepted = db.Column(db.Boolean, nullable=True)
-    is_completed = db.Column(db.Boolean, nullable=False, default=False)
+    has_succeeded = db.Column(db.Boolean, nullable=False, default=False)
     join_date = db.Column(db.Date, nullable=False)
 
     db.UniqueConstraint(student_id, program_id)
