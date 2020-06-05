@@ -9,8 +9,7 @@
 | ATTRIBUTE | DATATYPE | DEFINITION |
 | --- | --- | --- |
 | user\_id | INT | PK |
-| name | STRING | A name is the first name of the owner of the account.A name is useful for interaction with the user via emails or in center, etc.A name is NOT UNIQUE.A name is REQUIRED.A name is CHANGING.A name is not a KEY CANDIDATE.
- |
+| name | STRING | A name is the first name of the owner of the account.A name is useful for interaction with the user via emails or in center, etc.A name is NOT UNIQUE.A name is REQUIRED.A name is CHANGING.A name is not a KEY CANDIDATE.|
 | public\_id | UUID | A public\_id is the unique identifier for the user in the website.A public\_id is required for user authentication.A public\_id is UNIQUE, NOT NULL NEVER CHANGING. |
 | email | STRING | An Email is the email that we use to communicate with the user for authentication and authorizationAn Email is UNIQUE, REQUIRED, CHANGING. |
 | country\_name | STRING | A country\_name is the country the USER lives in.A country\_name is useful for real world communication with users and also PAYMENT methods and PAYMENT system.A country\_name is NOT UNIQUE,REQUIRED, CHANGING. |

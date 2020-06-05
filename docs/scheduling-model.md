@@ -26,5 +26,5 @@
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
-| schedule\_id | INT | PKFK |
+| schedule\_id | INT | PK - FK |
 | lecture\_id | SMALLINT | FK |
