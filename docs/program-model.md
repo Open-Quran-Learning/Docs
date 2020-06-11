@@ -3,8 +3,7 @@
 ![](./img/programs-model.png)
 
 ### **PROGRAMS**
-![](./img/samples/programs.png)
-![](./img/samples/programs2.png)
+![](./img/samples/programs_new.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |

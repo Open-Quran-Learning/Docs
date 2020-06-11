@@ -90,7 +90,7 @@
 | **lesson\_id** | **INT** | **FK** |
 
 ### **EXAM\_RESULT**
-
+![](./img/samples/assessment_results.png)
 | **ATTRIBUTE** | **DATA TYPES** | **DEFINITION** |
 | --- | --- | --- |
 | **exam\_result\_id** | **INT** | **PK** |

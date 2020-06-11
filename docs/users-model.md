@@ -5,8 +5,8 @@
 ![](./img/users-model.png)
 
 **USER**
-![](./img/samples/users.png)
-![](./img/samples/users2.png)
+![](./img/samples/users_new.png)
+
 
 | ATTRIBUTE | DATATYPE | DEFINITION |
 | --- | --- | --- |
