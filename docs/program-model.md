@@ -3,6 +3,8 @@
 ![](./img/programs-model.png)
 
 ### **PROGRAMS**
+![](./img/samples/programs.png)
+![](./img/samples/programs2.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
@@ -21,6 +23,7 @@
 | requirement\_id | SMALLINT | FK |
 
 ### **LECTURE**
+![](./img/samples/lectures.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
@@ -34,6 +37,7 @@
 ##
 
 ### **COURSE**
+![](./img/samples/courses.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
@@ -47,6 +51,7 @@
 ##
 
 ### **LESSON**
+![](./img/samples/lessons.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
@@ -73,6 +78,7 @@
 ```
 
 ### **REQUIREMENT**
+![](./img/samples/requirement.png)
 
 | ATTRIBUTE | DEFINITION |
 | --- | --- |
@@ -81,12 +87,14 @@
 | Gender | NOT-UNIQUE, BOOLEAN, NULLABLE |
 
 ### **SKILL**
+![](./img/samples/skills.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
 | Skill Name | STRING | Useful for enabling the program supervisor to insert the certain set of skills he requires the students to have.NOT UNIQUE, NOT NULL, CHANGING. |
 
 ### **PREREQUISITE**
+![](./img/samples/prerquesities.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
@@ -95,6 +103,7 @@
 | program\_id | SMALLINT | FK |
 
 ### **CATEGORY**
+![](./img/samples/program_ctegory.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
@@ -109,6 +118,7 @@
 | faq\_id | INT | FK |
 
 ### **FAQ**
+![](./img/samples/faqs.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
