@@ -3,6 +3,7 @@
 ## ![](./img/scheduling-model.png)
 
 ### **APPOINTMENT**
+![](./img/samples/appointments.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
@@ -14,6 +15,7 @@
 | schedule\_id | INT | FK |
 
 ### **SCHEDULE**
+![](./img/samples/schedule.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
@@ -23,6 +25,7 @@
 ###
 
 ### **LECTURE\_SCHEDULE**
+![](./img/samples/lecture_schedule.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |

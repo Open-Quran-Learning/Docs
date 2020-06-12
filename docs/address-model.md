@@ -3,6 +3,7 @@
 ![](./img/address-model.png)
 
 ### **EVENT\_ADDRESS**
+![](./img/samples/event_adress.png)
 
 EVENT\_ADDRESS : SUPERCLASS PHYSICAL\_ADDRESS: SUBCLASS WEB\_ADDRESS: SUBCLASS
 
@@ -12,6 +13,7 @@ EVENT\_ADDRESS : SUPERCLASS PHYSICAL\_ADDRESS: SUBCLASS WEB\_ADDRESS: SUBCLASS
 | type | STRING | A type is a discriminator that indicates whether the EVENT\_ADDRESS is WEB\_ADDRESS or PHYSICAL\_ADDRESS..A type is NOT UNIQUE, NOT NULL, NEVER CHANGING. |
 
 ### **PHYSICAL\_ADDRESS**
+![](./img/samples/physical_adress.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
@@ -20,6 +22,7 @@ EVENT\_ADDRESS : SUPERCLASS PHYSICAL\_ADDRESS: SUBCLASS WEB\_ADDRESS: SUBCLASS
 | address\_details | STRING | An address\_details attribute is a location entered by the STAFF member for a certain event ( PROGRAM - RECITATION ).An address\_details attribute is UNIQUE, NOT NULL, CHANGING |
 
 ### **WEB\_ADDRESS**
+![](./img/samples/web_adress.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |

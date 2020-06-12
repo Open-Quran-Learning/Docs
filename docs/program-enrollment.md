@@ -3,6 +3,7 @@
 ![](./img/program-enrollment.png)
 
 **PROGRAM\_ENROLLMENT**
+![](./img/samples/program_enrollment.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |

@@ -3,6 +3,7 @@
 ![](./img/assessment-model.png)
 
 ### **EXAM**
+![](./img/samples/exams.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
@@ -65,6 +66,7 @@
 }
 ```
 ### **PROGRAM\_EXAM**
+![](./img/samples/programs_exams.png)
 
 | **ATTRIBUTE** | **DATA TYPES** | **DEFINITION** |
 | --- | --- | --- |
@@ -72,6 +74,7 @@
 | **program\_id** | **INT** | **FK** |
 
 ### **COURSE\_EXAM**
+![](./img/samples/course_exam.png)
 
 | **ATTRIBUTE** | **DATA TYPES** | **DEFINITION** |
 | --- | --- | --- |
@@ -79,6 +82,7 @@
 | **course\_id** | **INT** | **FK** |
 
 ### **LESSON\_EXAM**
+![](./img/samples/lesson_exam.png)
 
 | **ATTRIBUTE** | **DATA TYPES** | **DEFINITION** |
 | --- | --- | --- |
@@ -86,7 +90,7 @@
 | **lesson\_id** | **INT** | **FK** |
 
 ### **EXAM\_RESULT**
-
+![](./img/samples/assessment_results.png)
 | **ATTRIBUTE** | **DATA TYPES** | **DEFINITION** |
 | --- | --- | --- |
 | **exam\_result\_id** | **INT** | **PK** |

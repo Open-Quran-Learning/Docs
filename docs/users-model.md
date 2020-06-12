@@ -5,6 +5,8 @@
 ![](./img/users-model.png)
 
 **USER**
+![](./img/samples/users_new.png)
+
 
 | ATTRIBUTE | DATATYPE | DEFINITION |
 | --- | --- | --- |
@@ -23,12 +25,14 @@
 | type | STRING | A type is a discriminator that indicates whether the user is STAFF or STUDENT.A type is NOT UNIQUE, NOT NULL, NEVER CHANGING. |
 
 ### **STUDENT**
+![](./img/samples/students.png)
 
 | ATTRIBUTE | DATA TYPE | DEFINITION |
 | --- | --- | --- |
 | user\_id | INT | FK |
 
 ### **STUDENT\_GUARDIAN**
+![](./img/samples/student_guardian.png)
 
 | ATTRIBUTE | DATA-TYPE | DEFINITION |
 | --- | --- | --- |
@@ -37,6 +41,7 @@
 | guardian\_id | INT | FK |
 
 ### **GUARDIAN**
+![](./img/samples/guardians.png)
 
 | ATTRIBUTE | DATA-TYPE | DEFINITION |
 | --- | --- | --- |
@@ -45,6 +50,7 @@
 | phone\_number | STRING | A phone\_number is the phone\_number of the guardian that oversees the performance of his child.A phone\_number is UNIQUE, CHANGING, NOTNULL. |
 
 ### **STAFF**
+![](./img/samples/staff.png)
 
 | ATTRIBUTE | DATA-TYPE | DEFINITION |
 | --- | --- | --- |
@@ -53,6 +59,7 @@
 ##
 
 ### **STAFF\_PERMISSION**
+![](./img/samples/staff_permission.png)
 
 | ATTRIBUTE | DATA-TYPE | DEFINITION |
 | --- | --- | --- |
@@ -61,6 +68,7 @@
 | permission\_id | SMALLINT | FK |
 
 ### **PERMISSION**
+![](./img/samples/permissions.png)
 
 | ATTRIBUTE | DATA-TYPE | DEFINITION |
 | --- | --- | --- |
