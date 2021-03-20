@@ -9,7 +9,7 @@ Flask-Session==0.3.1
 Flask-SQLAlchemy==2.4.1
 importlib-metadata==1.6.0
 itsdangerous==1.1.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 jwt==1.0.0
 MarkupSafe==1.1.1
 more-itertools==8.2.0
